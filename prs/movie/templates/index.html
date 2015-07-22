@@ -15,7 +15,7 @@
                 {% endif  %}
             {% endfor %}
         </table>
-<div class="pagination">
+    <div class="pagination">
         <span class="step-links">
             {% if movies.has_previous %}
             <a href="{{ url }}??page={{ movies.previous_page_number }}" >previous</a>
@@ -41,7 +41,8 @@
         No genres found
 {% else %}
   {% for genre in genres %}
-    <a onclick='PostGenreEvidence(this)' href="/genre/{{genre.genre.strip}}?sessionid={{sessionId}}&userid={{user_id}}">{{genre.genre}}</a><br />
+    <a onclick='PostGenreEvidence(this)' 
+        href="/genre/{{genre.genre.strip}}?sessionid={{sessionId}}&userid={{user_id}}">{{genre.genre}}</a><br />
   {% endfor %}
 {% endif %}
 {% endblock section%}
