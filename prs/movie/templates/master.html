@@ -15,7 +15,26 @@
    <script>
       $(document).ready(function(){
         $('[data-toggle="popover"]').popover();
+
+        $('.movie').on('show.bs.popover', function () {         
+                var userid;
+                var contentid;
+                userid = $(this).attr("data-userid");      
+                contentid = $(this).attr("data-contentid");
+                postEvidence(userid,contentid,"details");
+              });
       });
+       function PostGenreEvent(a) {
+        postEvidence($(a).data("userid"), $(a).data("contentid"), 'genre');
+      }      
+      function PostMoreDetailsEvent(a) {
+        postEvidence($(a).data("userid"), $(a).data("contentid"), 'moredetails');
+      };
+
+      function PostSaveForLaterEvidence(a) {
+        postEvidence($(a).data("userid"), $(a).data("contentid"), 'SaveForLater');
+      };
+
    </script>
  </head>
 

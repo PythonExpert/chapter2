@@ -1,6 +1,6 @@
 {% extends "master.html" %}
 {% block main %}
-     {% if movies %}
+   {% if movies %}
      <table>
         <tr>
             {% for movie in movies %}
@@ -15,9 +15,21 @@
                         title="{{ movie.title}}" 
                         data-contentid="{{movie.id}}" 
                         data-content="
-                              Year: {{movie.year}} <br/>
-                              Rotten Tomate rating: {{ movie.rtallcriticsrating }} <br />
-                              <a href='/movie/{{movie.id}}'>more details</a>" 
+                            Year: {{movie.year}} 
+                            <br/>
+                            Rotten Tomate rating: {{ movie.rtallcriticsrating }} 
+                            <br /> 
+                            <a onclick='PostSaveForLaterEvidence(this)' 
+                               href='#' 
+                               data-html='true' 
+                               data-contentid='{{movie.id}}'' 
+                               data-userid = '{{user_id}}'>save for later</a> 
+                            <br />
+                            <a href='/movie/{{movie.id}}' 
+                            data-html='true' 
+                            data-contentid='{{movie.id}}'' 
+                            data-userid = '{{user_id}}'  onclick='PostMoreDetailsEvent(this)'
+                            >more details</a>" 
                     src="{{movie.rtpictureurl.strip}}" />
                 </td>
                 {% if forloop.counter|divisibleby:5 %}
